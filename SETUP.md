@@ -90,3 +90,12 @@ codebase-memory-mcp  ; lalu panggil tool index_project dari MCP
   jurnal BNK1/CSH1 tiap PT diarahkan ke kas/bank milik PT tsb, dan **1000 produk** (877 storable FIFO, 42 jasa).
 - Catatan: Odoo 20 = tanpa `account.group` (struktur otomatis dari kode), tanpa `ir_property`
   (company_dependent disimpan JSON di kolom + sinkron `ir.default`), kas/bank wajib tak di-share antar-PT.
+
+### Revisi master data (direct DB)
+- COA: akun kas/bank kini 1 set SHARED dipakai 6 PT (kode tanpa suffix; duplikat per-PT dihapus).
+- Kategori produk: hierarki parent/child di bawah root `All`; tiap leaf stock punya akun persediaan +
+  jurnal STJ per-PT (`real_time` + FIFO/AVCO).
+- Produk: 1000 barang (semua storable), kode barang di field **Reference** (`default_code`),
+  nama produk bersih tanpa kode (`BRG-0001` … `BRG-1000`).
+- Catatan: asset_cash di-share luar validasi Odoo 20 (bypass SQL) — jika suatu saat menyunting
+  akun kas/bank lewat UI, validasi "Bank & Cash accounts cannot be shared" bisa muncul kembali.
