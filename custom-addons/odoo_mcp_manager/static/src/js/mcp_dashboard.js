@@ -3,7 +3,7 @@
 import { Component, proxy, onMounted, onWillUnmount } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { standardActionServiceProps } from "@web/webclient/actions/action_service";
+import { standardActionServiceProps } from "@web/webclient/actions/action_plugin";
 
 // ── Provider icon/color mapping ───────────────────────────────────────────────
 const PROVIDER_ICONS = {
