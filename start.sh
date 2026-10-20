@@ -16,7 +16,7 @@ fi
 docker exec odoo20-db pg_isready -U odoo >/dev/null || { echo "[!] DB belum siap, tunggu beberapa detik"; sleep 3; }
 
 # 2. Matikan instance Odoo lama (kalau ada)
-pkill -f "odoo-bin -c $ROOT/odoo20.conf" 2>/dev/null || true
+pkill -f "odoo-bin.*odoo20\.conf" 2>/dev/null || true
 sleep 1
 
 # 3. Start server Odoo di background

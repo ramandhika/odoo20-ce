@@ -23,6 +23,8 @@ cd odoo && git fetch --depth=10 origin 20.0
 cd ~/Documents/Odoo
 uv venv --python 3.12 venv
 uv pip install --python ./venv/bin/python -r odoo/requirements.txt
+# dependency tambahan untuk module akuntansi community & MCP manager:
+uv pip install --python ./venv/bin/python qifparse pydantic mcp
 ```
 
 ## Step 3 — Container PostgreSQL khusus Odoo 20
