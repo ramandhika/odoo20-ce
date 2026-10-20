@@ -1,0 +1,9 @@
+# Sumber Odoo di-clone sendiri dari upstream — jangan di-push ke sini
+odoo/
+
+# Python venv & runtime
+venv/
+odoo-data/
+odoo.log
+__pycache__/
+*.pyc
