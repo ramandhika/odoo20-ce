@@ -82,3 +82,11 @@ codebase-memory-mcp  ; lalu panggil tool index_project dari MCP
   SORD/PORD (ir.sequence sale.order/purchase.order), REQ/DPBILL/RDP/OAP/ADJSP/LDCST per perusahaan.
 ### Warna ala Enterprise (nr_enterprise_look)
 - Override `$o-brand-odoo` #714B67 + action teal #017E84 via bundle `web._assets_primary_variables`.
+
+### Data master PSAK + produk (inject direct DB)
+- `inject_psak.py`: COA PSAK kompleks (167 akun shared + 42 akun kas/bank per-PT, kode `.PTx`),
+  kategori produk auto-valuasi (real_time/perpetual + FIFO/AVCO, akun persediaan masing-masing
+  Bahan Baku/WIP/Barang Jadi/Sparepart via `property_stock_valuation_account_id` + jurnal STJ per-PT),
+  jurnal BNK1/CSH1 tiap PT diarahkan ke kas/bank milik PT tsb, dan **1000 produk** (877 storable FIFO, 42 jasa).
+- Catatan: Odoo 20 = tanpa `account.group` (struktur otomatis dari kode), tanpa `ir_property`
+  (company_dependent disimpan JSON di kolom + sinkron `ir.default`), kas/bank wajib tak di-share antar-PT.
