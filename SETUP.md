@@ -71,3 +71,14 @@ codebase-memory-mcp  ; lalu panggil tool index_project dari MCP
 | `psycopg2 OperationalError` | cek `docker ps` → odoo20-db hidup? port 5433 benar? |
 | Port 8069 dipakai | `ss -ltnp | grep 8069`, pindah `http_port` |
 | Module errors saat install deps | beberapa butuh header C (libldap dll.) — lihat log pip |
+
+## Konfigurasi tambahan
+### Multi-company & penomoran (nr_doc_sequence)
+- 6 company: PT SUI (holding), LEI, LSK, PBS, LUP, AHR — chart generic_coa + jurnal duplikat per PT.
+- Format: `[COMP]/[SHORT]/[YYYY]/[MM]/[00001]`, counter lanjut antarbulan, reset tiap 1 Jan.
+- Module `nr_doc_sequence` override `_get_starting_sequence` + `_get_next_sequence_format`.
+- Map company code: `ir.config_parameter` `document_sequence.company_codes` = "1:SUI;2:LEI;...".
+- Short code: INV/RINV (sale), BILL/RBILL (purchase), PBNK/BNK (bank & cash), JMO (misc),
+  SORD/PORD (ir.sequence sale.order/purchase.order), REQ/DPBILL/RDP/OAP/ADJSP/LDCST per perusahaan.
+### Warna ala Enterprise (nr_enterprise_look)
+- Override `$o-brand-odoo` #714B67 + action teal #017E84 via bundle `web._assets_primary_variables`.

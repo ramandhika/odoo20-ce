@@ -1,0 +1,13 @@
+// Palette of colors used by backend Enterprise Odoo.
+// Declared BEFORE web/core primary_variables so that `!default` uses this value.
+$o-enterprise-color: #714B67 !default;
+$o-enterprise-action-color: #017E84 !default;
+
+// At the heart of the color: brand & navbar.
+$o-community-color: #714B67 !default;
+$o-brand-odoo: #714B67 !default;
+$o-brand-primary: #714B67 !default;
+$o-brand-secondary: #8f8f8f !default;
+
+// Look & feel of ENTERPRISE buttons.
+$o-action: #017E84 !default;
